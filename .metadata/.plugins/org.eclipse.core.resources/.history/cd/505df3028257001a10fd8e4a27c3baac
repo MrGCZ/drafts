@@ -1,0 +1,22 @@
+package java_bb;
+
+public class ArrayTest {
+	public static void main(String[] args) {
+		//1.一维数组的初始化
+		//1.1静态初始化:数组的初始化和数组元素的赋值操作同时进行
+		int[] ids; //申明
+		ids = new int[] {1,2,3,4};
+		//1.2动态初始化
+		String[] names = new String[5];
+		//数组一旦确定，长度不可以更改
+		
+		//2.调用数组指定位置元素
+		names[0] = "James";
+		names[1] = "Curry";
+		names[2] = "Anthony";
+		//字符串索引
+		System.out.println(names[2].charAt(0));
+		
+	}
+	
+}

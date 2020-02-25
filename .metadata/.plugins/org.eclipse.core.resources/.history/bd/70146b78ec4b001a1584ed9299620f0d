@@ -1,0 +1,20 @@
+package java_oo;
+
+public abstract class Duck {
+		FlyBehavior flyBehavior;
+		//思想 ： 把鸭子的行为通过其他类实现，因为不同的鸭子有不同的飞行行为，如果在duck子类中实现需要重用很多代码。可以把这部分从duck类的实现中剥离出来，新建一个类或接口，
+		//其子类专门实现飞行的模式。在duck类中只需要定义出这个实例变量，在其子类中只需要申明实例变量不同的实现方式。
+		
+		public Duck(){}
+		
+		public abstract void display();
+		
+		public void performFly() {
+			flyBehavior.fly();
+		}
+		
+		public void setFlyBehavior(FlyBehavior fb) {
+			flyBehavior = fb;
+		}
+		
+}
