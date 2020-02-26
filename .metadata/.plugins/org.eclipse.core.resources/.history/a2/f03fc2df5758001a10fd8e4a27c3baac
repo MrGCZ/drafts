@@ -1,0 +1,58 @@
+package java_oo;
+//面向对象2
+//1.封装 ：该隐藏的隐藏起来，该暴露的暴露出来。
+//封装的体现：1.属性private，对外提供set和get方法；2.方法private，仅供内部其他方法调用；3.单例模式
+//java规定的4种权限 ,从小到大private,default(不写的话就是这个，不用写default),protected,public
+//可以用来修饰类的内部结构：属性、方法、构造器、内部类。
+
+//2.构造方法 constructor
+//new Animal()其实就是new+构造器的表达方式
+//定义构造器 权限修饰符+类名（形参列表）{}
+
+
+public class OO_Test {
+	public static void main(String[] args) {
+		Animal a = new Animal("pig");
+		a.age = 3;
+		a.setLegs(19);		
+		a.showleg();
+		
+		
+		
+	}
+}
+
+
+class Animal{
+	//属性
+	String name;
+	int age;
+	private int legs; //private使得属性对外不可见 
+	
+	//构造器:与类同名
+	public Animal(String n) {
+		name = n;		
+	}
+	
+	//方法
+	private void eat() {
+		System.out.println(name + " eat");
+	}
+	
+	//legs只能通过方法修改 
+	public void showleg() {
+		System.out.println(legs);
+		eat();
+	}
+	
+	//对属性进行private封装后，一般会提供set和get的public方法 
+	public void setLegs(int l) {
+		if(l>=0) {			
+			legs=l;
+		}		
+	}
+	
+	public int getlegs() {
+		return legs;
+	}
+}

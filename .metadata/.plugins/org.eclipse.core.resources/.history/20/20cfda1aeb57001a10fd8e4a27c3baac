@@ -1,0 +1,46 @@
+package java_oo;
+//类的属性、局部变量、类的方法
+public class UserTest {
+	public static void main(String[] args) {
+		User usera = new User();
+		System.out.println(usera.name_in);		
+		usera.age = 18;
+		System.out.println(usera.getAge());
+		
+		//匿名对象的使用
+		new User().talk("Chinese");
+		new User().age= 22;
+		System.out.println(new User().getAge());
+	}	
+}
+
+class User{
+	//属性（或成员变量） 定义在类的一对{}内
+	//1.有默认值 null 0 false等	
+	//2.可以申明属性，指明其权限修饰符，局部变量的权限和修饰符由方法指定。
+	//3.加载到堆
+	private String name;
+	public int age;
+	public String name_in;
+	
+	public User(){
+		this.name_in = "abc"; //this可以指定为这个类的成员变量，如果不加this只是一个局部变量，无法通过实例.属性进行访问。
+		
+	}
+	
+	//局部变量 ：定义在方法内、方法形参、代码块内、构造器形参、构造器内部的变量。
+	//1.没有默认值,需要显式赋值。
+	//2.不可以使用权限修饰符
+	//3.加载到栈
+	public void talk(String language) { //形参，也是局部变量
+		String food = "turkey"; //局部变量
+		System.out.println(language + food);
+	}
+	
+	//方法：
+	//1.方法的使用中，可以调用当前累的属性或者方法
+	//2.方法中不可以定义方法
+	public int getAge() {
+		return age;
+	}
+}
