@@ -1,0 +1,58 @@
+package java_oo;
+//面向对象4
+//1.多态 ： 父类的引用指向子类的对象  
+
+public class OO_Test2 {
+	public static void main(String[] args) {
+		//多态性：子类对象的多态性，父类的引用指向子类的对象 
+		Person p1 = new Man();
+		p1.eat();
+	}
+
+}
+
+class Person{
+	String name;
+	int age;
+		
+	public void eat() {
+		System.out.println("eat");
+	}
+	
+	public void walk() {
+		System.out.println("walk");
+	}
+}
+
+
+class Man extends Person{
+	
+	public void eat() {
+		System.out.println("man eat");
+	}
+	
+	public void walk() {
+		System.out.println("man walk");
+	}
+	
+	public void earnMoney() {
+		System.out.println("earn money");
+	}
+}
+
+
+class Woman extends Person{
+	boolean isBeauty;
+	
+	public void eat() {
+		System.out.println("woman eat");
+	}
+	
+	public void walk() {
+		System.out.println("woman walk");
+	}
+	
+	public void goShopping() {
+		System.out.println("go shopping");
+	}
+}

@@ -1,0 +1,39 @@
+package java_oo;
+//包装类
+//基本数据类型、包装类、String三者间的转换
+
+import org.junit.Test;
+
+public class WrapperTest {
+	
+	//基本数据类型 --》包装类
+	@Test //单元测试方法 
+	public void test1() {
+		int num = 10;
+		Integer int1=new Integer(num);
+		System.out.println(int1);
+		Integer int2=new Integer("123"); //还可以放String 
+		Integer int3=3; //自动装箱 java5.0新功能 
+		
+		
+		Float f1 = new Float(12.3f);
+		Float f2 = new Float("12.3");
+		
+		
+	}
+	
+	//包装类 --》基本数据类型
+	@Test
+	public void test2() {
+		Integer int1 = new Integer(12);
+		int i1 = int1.intValue();
+		
+		Float f1 = new Float(12.3);
+		float ff1 = f1.floatValue();
+		
+		int i2 = int1; //自动拆箱 java5.0新功能 
+		
+	}
+	
+	
+}

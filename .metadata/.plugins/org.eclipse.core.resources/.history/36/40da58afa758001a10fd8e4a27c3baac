@@ -1,0 +1,87 @@
+package java_oo;
+//面向对象4
+//1.多态 ： 父类的引用指向子类的对象  
+//1.1多态的使用:在编译期，只能调用父类声明的方法，在运行期，我们执行的是子类重写父类的方法。编译向走，运行向右（只针对方法）。
+//多态的使用也叫动态绑定（晚绑定），在编译时完全不知道传入的是什么类型，只知道它的父类是什么。只有等到方法调用的那一刻，解释运行器才知道具体要调用什么方法。
+
+
+//2.关键字
+//2.1 instance
+//Human p1 = new Man();内存中其实已经有Man的属性和类型的，但是由于申明为父类类型，所以不能调用子类特有的属性和方法。
+//可以使用强制类型转换符 如 （Man）p1
+
+
+public class OO_Test2 {
+	public static void main(String[] args) {
+		//多态性：子类对象的多态性，父类的引用指向子类的对象 
+		Human p1 = new Man();
+		//多态的使用：当调用子父类同名同参数的方法时，实际执行的是子类重写父类的方法--虚拟方法调用
+		p1.eat(); //调用的是子类的方法
+		//p1.earnMoney(); //通不过编译，编译器认为它是Person，所以不能调用子类特有的方法或属性
+				
+		System.out.println(p1.id);//居然是1001，Human父类的属性值。多态只适用于方法，不适用于属性
+		
+		System.out.println("------");
+		Human p2 = new Woman();
+		p1.eatWith(p2);
+		
+		//强制类型转换
+		Man p11 = (Man)p1;
+		p11.earnMoney();
+	}
+
+}
+
+class Human{
+	String name;
+	int age; 
+	int id = 1001; //用于测试多态的时候属性选择问题 
+		
+	public void eat() {
+		System.out.println("eat");
+	}
+	
+	public void walk() {
+		System.out.println("walk");
+	}
+	
+	public void eatWith(Human human) {
+		human.eat();
+		this.eat();
+	}
+}
+
+
+class Man extends Human{
+	
+	int id = 1002;
+	
+	public void eat() {
+		System.out.println("man eat");
+	}
+	
+	public void walk() {
+		System.out.println("man walk");
+	}
+	
+	public void earnMoney() {
+		System.out.println("earn money");
+	}
+}
+
+
+class Woman extends Human{
+	boolean isBeauty;
+	
+	public void eat() {
+		System.out.println("woman eat");
+	}
+	
+	public void walk() {
+		System.out.println("woman walk");
+	}
+	
+	public void goShopping() {
+		System.out.println("go shopping");
+	}
+}

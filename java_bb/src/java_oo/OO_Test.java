@@ -1,4 +1,5 @@
 package java_oo;
+import java_oo_sub.*;
 //面向对象2
 //1.封装 ：该隐藏的隐藏起来，该暴露的暴露出来。
 //封装的体现：1.属性private，对外提供set和get方法；2.方法private，仅供内部其他方法调用；3.单例模式
@@ -25,6 +26,20 @@ public class OO_Test {
 		a.setLegs(19);		
 		a.showleg();
 		
+		//protected测试 
+		Person1 person1 = new Person1();
+		//person1.protectedRun; //会报错：不同包下的普通类（非子类），无法调用protected
+		
+		SubPerson1 subperson1 = new SubPerson1();
+		subperson1.method();
+		
+	}
+}
+
+//protected测试
+class SubPerson1 extends Person1{
+	public void method() {
+		protectedRun(); //只有在不同包（java_oo）的子类（SubPerson1）中，才可以调用它的protected方法 (java_oo_sub.Person1.protectedRun)
 	}
 }
 

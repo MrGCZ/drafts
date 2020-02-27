@@ -1,0 +1,11 @@
+package java_oo_sub;
+
+public class Person1 {
+	protected void run() {
+		System.out.println("people run");
+	}
+	
+	void laugh() {
+		System.out.println("laugh");
+	}
+}
