@@ -9,6 +9,7 @@ import java_oo_sub.*;
 //2.构造方法 constructor
 //new Animal()其实就是new+构造器的表达方式
 //定义构造器 权限修饰符+类名（形参列表）{}
+//#I Found#:子类必须要有一个构造器和父类一致，因为在实例化子类时调用了子类的构造器，之后也会调用父类构造器。
 //JavaBean（可重用对象）:满足三个条件则是javabean：1.类是公共的；2.有一个无参的公共构造器；3.有熟悉和对应的get和set方法
 
 //3.this的使用
@@ -32,6 +33,10 @@ public class OO_Test {
 		
 		SubPerson1 subperson1 = new SubPerson1();
 		subperson1.method();
+		
+		Dog dog1 = new Dog("AA");
+		//Dog dog1 = new Dog("AA",123); 子类不存在这个构造器
+		
 		
 	}
 }
@@ -80,5 +85,11 @@ class Animal{
 	
 	public int getlegs() {
 		return legs;
+	}
+}
+
+class Dog extends Animal {
+	public Dog(String name) { //子类必须要有一个构造器和父类一致
+		super(name);
 	}
 }

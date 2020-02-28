@@ -1,0 +1,77 @@
+package java_oo;
+
+/*面向对象5
+1.static
+可以用来修饰属性、方法、代码块、内部类
+1.1 static修饰属性为静态变量（类变量），无static修饰的属性 为实例变量。多个对象共享同一个静态变量，某个对象修改静态变量时，会导致其他变量调用时是修改过的。
+静态变量随着类的加载而加载(类只加载一次，所以静态变量只存在一份)，早于对象的创建。
+1.2 static修饰方法为静态方法，也是随着类的加载而加载。
+静态方法中只能调用静态方法或属性，因为非静态的此时还未加载。也就是static方法中不可以用this（当前对象）或super（当前对象的父类）关键字，因为还没有当前对象！
+非静态可以调用静态。
+共享的数、常量一般申明为static，操作静态变量的方法、工具方法一般申明为静态方法。
+1.3应用：单例
+
+2.main()方法
+main()作为程序的入口，可以作为和控制台交互的方式
+
+3，代码块（初始化块） 就是一个{}
+作用：用来初始化类或对象，对对象的属性进行初始化，只能用static修饰，分为静态代码块和非静态代码块 
+代码块自动执行：静态代码块随着类的加载而执行(只执行一次)，非静态随着对象的创建而执行（每创建一个对象执行一次）。
+*/
+public class OO_Test3 {
+	public static void main(String[] args) {
+		//static
+		Chinese.nation = "CHN"; //静态代码块在这里执行
+		Chinese.show();
+		Chinese a = new Chinese(); //非静态代码块随着对象的创建而执行 
+		a.show(); //实例也可以调用静态方法
+		Chinese b = new Chinese();
+		System.out.println(a.getId());
+		System.out.println(b.getId());
+		
+		//main()  run as - run configuration - arguments中可以填入参数 
+		for(int i=0;i<args.length;i++) {
+			System.out.println("*****" + args[i]);
+		}
+		
+		
+	}
+}
+
+
+class Chinese { 
+	String name;
+	int age;
+	static String nation;
+	private int id;
+	private static int init = 1001;//static申明的属性被所有对象共享，自增id的基数
+	static String blockname;
+	
+	public Chinese() {
+		id = init++; //创造一个对象，则id+1
+	}
+	
+	//代码块
+	{
+		blockname ="non-static";
+		System.out.println(blockname + "block run");
+	}
+	
+	static{
+		blockname = "static";
+		System.out.println(blockname + "block run");
+	}
+	
+	public static void show() {
+		System.out.println("I'm a Chinese");
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}	
+	
+}
