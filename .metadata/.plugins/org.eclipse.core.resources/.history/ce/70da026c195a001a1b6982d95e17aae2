@@ -1,0 +1,32 @@
+package java_basic;
+
+import org.junit.Test;
+
+//异常处理
+public class ExceptionTest {
+	
+	@Test
+	public void test3() {
+		String str ="abc";
+		System.out.println(str.charAt(3));
+			
+	}
+	
+	
+	//ArrayIndexOutOfBoundException
+	@Test
+	public void test2() {
+		int[] arr = new int[2];
+		System.out.println(arr[2]);
+			
+	}
+	
+	
+	//NullPointerException
+	@Test
+	public void test1() {
+		int[] arr = null;
+		System.out.println(arr[1]);
+	}
+	
+}

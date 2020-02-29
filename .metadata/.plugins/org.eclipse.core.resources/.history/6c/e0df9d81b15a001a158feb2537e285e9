@@ -1,0 +1,101 @@
+package java_basic;
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.*;
+
+import org.junit.Test;
+
+//异常处理
+//try-catch(Exception e)-finally结构：
+//1.finally是可选的,表示一定会执行的代码,即使try中有return语句，catch中有return语句或catch中继续有报错的情况；
+//2.catch报错类型的子类在父类上;3.try结构中声明的变量，出了try结构后，不能再被调用
+
+public class ExceptionTest {
+	
+	//编译时异常*****************************
+	//编译时异常连编译都通不过，必须显示的捕捉异常
+	//FileNotFoundException
+	@Test
+	public void test7() {
+		try {
+			File file = new File("abc.txt");
+			FileInputStream fis = new FileInputStream(file);
+			int data = fis.read();
+			while(data != -1) {
+				System.out.println((char)data);
+				data = fis.read();
+			}
+			fis.close();
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//运行时异常******************************
+	//ArithmeticException
+	@Test
+	public void test6() {
+		int a =10;
+		int b =0;
+		int c = a/b;
+	}
+	
+	//NumberFormatException
+	@Test
+	public void test5() {
+		String str = "abc";
+		int num = Integer.parseInt(str);
+	}
+	
+	//ClassCastException 类转换错误
+	@Test
+	public void test4() {
+		Object obj = new Integer(12);
+		String str = (String)obj;
+	}
+	
+	//StringIndexOutOfBoundException
+	@Test
+	public void test3() {
+		String str ="abc";
+		System.out.println(str.charAt(3));
+			
+	}
+	
+	//ArrayIndexOutOfBoundException
+	@Test
+	public void test2() {
+		int[] arr = new int[2];
+		System.out.println(arr[2]);
+			
+	}
+	
+	//NullPointerException
+	@Test
+	public void test1() {
+		int[] arr = null;
+		System.out.println(arr[1]);
+	}
+	
+	public static void main(String[] args) {
+		String str = "123";
+		str = "abc";
+		try {
+			int num = Integer.parseInt(str);
+		}catch(NumberFormatException e){
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			System.out.println("First exception capturer NumberFormatException");
+			int a = 1/0;
+		}catch(Exception e) {
+			System.out.println("last exception capturer");
+		}finally {
+			System.out.println("That's finally");
+		}
+	}
+	
+}

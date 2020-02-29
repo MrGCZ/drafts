@@ -1,0 +1,14 @@
+package java_basic;
+
+import org.junit.Test;
+
+//异常处理
+public class ExceptionTest {
+	//NullPointerException
+	@Test
+	public void test1() {
+		int[] arr = null;
+		System.out.println(arr[1]);
+	}
+	
+}
